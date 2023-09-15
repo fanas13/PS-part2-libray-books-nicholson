@@ -18,7 +18,7 @@ let currentBooks = [...books];
 function displayBooks(books) {
     console.log("inside");
     libraryBooks.innerHTML = '';
-    books.forEach(book => {
+    books && books.forEach(book => {
         // debugger
         const li = document.createElement('li');
         li.textContent = `${book.title} by ${book.author} (${book.year})`;
@@ -26,10 +26,26 @@ function displayBooks(books) {
     });
 }
 
-function sortBooksByTitle() {
+function sortBooksByTitle() { // sort by title
     currentBooks.sort((a, b) => a.title.localeCompare(b.title));
     displayBooks(currentBooks);
 }
 
+function sortBooksByAuthor() { // sort by author
+    currentBooks.sort((a, b) => a.author.localeCompare(b.author));
+    displayBooks(currentBooks);
+}
+
+function searchABook() {
+    const searchInputField = searchBookInput.value.toLowerCase();
+    currentBooks = books.filter(book => {
+        return book.title.toLowerCase().includes(searchInputField) || book.author.toLowerCase().includes(searchInputField);
+    });
+    displayBooks(currentBooks);
+}
+
+
 displayBooks(currentBooks);
 sortByTitleBtn.addEventListener('click', sortBooksByTitle);
+sortByAuthorBtn.addEventListener('click', sortBooksByAuthor);
+searchBookInput.addEventListener('input', searchABook);

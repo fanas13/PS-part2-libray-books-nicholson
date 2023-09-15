@@ -1,0 +1,8 @@
+[
+    {
+        title: 'The great Gatsby', author: 'F. Scott Fitzgerald', year: 1925
+    },
+    {
+        title: 'To Kill a MorkingBird', author: 'Harper Lee', year: 1960
+    }
+]
